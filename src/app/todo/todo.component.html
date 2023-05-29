@@ -1,0 +1,16 @@
+<h2>Todos</h2>
+<div>
+  <form [formGroup]="todoForm" (submit)="addTodo()">
+    <input type="text" formControlName="newTodo" placeholder="Add todo" class="addProperty">
+    <button type="submit" class="addButton">Add</button>
+  </form>
+</div>
+<ul>
+  <li *ngFor="let todo of todos">
+    <input type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted(todo)">
+    <span [ngClass]="{'completed': todo.completed}">{{todo.title}}</span>
+    <button (click)="delete(todo)" class="deleteProperty" id="remove">Delete</button>
+  </li>
+  
+</ul>
+<div><button (click)="logout()" class="btn btn-danger">Logout</button></div>
